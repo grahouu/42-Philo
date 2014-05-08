@@ -5,14 +5,14 @@
 #                                                     +:+ +:+         +:+      #
 #    By: acollin <acollin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2014/05/08 17:08:56 by acollin           #+#    #+#              #
-#    Updated: 2014/05/08 17:08:56 by acollin          ###   ########.fr        #
+#    Created: 2014/05/08 21:22:20 by acollin           #+#    #+#              #
+#    Updated: 2014/05/08 22:16:44 by acollin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME=bit_philo
-VERSION=1.0.1
-CFLAGS=-Wall -Werror -Wextra -g
+VERSION=1.0.4
+CFLAGS= -Wall -Werror -Wextra -g
 
 SRC=global_philo.c \
 	main.c \
@@ -22,7 +22,7 @@ OBJ=$(SRC:.c=.o)
 all: $(NAME) finish
 
 $(NAME): $(OBJ)
-	gcc $(CFLAGS) $(INCLUDES) -o $(NAME) $(OBJ) $(LIBS)
+	gcc $(CFLAGS) $(INCLUDES) -o $(NAME) $(OBJ) $(LIBS) -lpthread
 
 %.o: %.c philo.h
 	gcc $(CFLAGS) $(INCLUDES) -o $@ -c $<
