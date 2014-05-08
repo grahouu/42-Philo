@@ -6,7 +6,7 @@
 /*   By: acollin <acollin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/05/08 15:10:37 by acollin           #+#    #+#             */
-/*   Updated: 2014/05/08 15:14:25 by acollin          ###   ########.fr       */
+/*   Updated: 2014/05/08 17:04:01 by acollin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,19 @@ typedef struct		s_philo
 	int				rest;
 	int				life;
 }					t_philo;
+
+typedef struct		s_area
+{
+	t_philo			p1;
+	t_philo			p2;
+	t_philo			p3;
+	t_philo			p4;
+	t_philo			p5;
+	t_philo			p6;
+	t_philo			p7;
+}					t_area;
+
+void				set_area(t_area *new_area);
+t_area				get_area(void);
 
 #endif
