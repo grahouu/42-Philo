@@ -6,7 +6,7 @@
 /*   By: acollin <acollin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/05/08 15:09:03 by acollin           #+#    #+#             */
-/*   Updated: 2014/05/08 22:33:42 by acollin          ###   ########.fr       */
+/*   Updated: 2014/05/09 10:02:39 by glovichi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,26 @@
 
 static void			*begin(void *data)
 {
-//	t_area			*area;
+	int				i;
+	t_area			*area;
 
-//	area = get_area();
-	puts("Hello");
+	i = 1;
+	area = get_area();
+	puts("Hello Sir");
 	int *x = (int*)(data);
 	printf("%d\n", *x);
 //	printf("My pid: %d\n", area->philo[(int)*data]->id);
-	data = data;
 	while(1);
+	{
+		ft_putstr("Begin\n");
+		ft_putnbr(i);
+		ft_putstr("Endin\n");
+		sleep(1);
+		if (area->philo[i].life < 25)
+			ft_putstr("dalle\n");
+		area->philo->life = area->philo->life - 1;
+		ft_putstr("testy");
+	}
 	return (NULL);
 }
 
@@ -45,7 +56,18 @@ static void			init_area()
 		area->philo[i].life = MAX_LIFE;
 		i++;
 	}
-	set_area(area);
+	i = 0;
+	while (1)
+	{
+		ft_putstr("Begin\n");
+		ft_putnbr(area->philo[i].life);
+		ft_putstr("\n");
+		sleep(1);
+		if (area->philo[i].life < 80)
+			ft_putstr("la dalle\n");
+		area->philo[i].life = area->philo[i].life - 1;
+	}
+/*	set_area(area);*/
 }
 
 int					main()

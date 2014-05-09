@@ -6,7 +6,7 @@
 /*   By: acollin <acollin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/05/08 15:10:37 by acollin           #+#    #+#             */
-/*   Updated: 2014/05/08 22:33:51 by acollin          ###   ########.fr       */
+/*   Updated: 2014/05/09 09:59:03 by glovichi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,9 @@ typedef struct		s_area
 
 void				set_area(t_area *new_area);
 t_area				*get_area(void);
+
+void				ft_putstr(const char *s);
+void				ft_putnbr(int n);
+void				ft_putchar(char c);
 
 #endif

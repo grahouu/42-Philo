@@ -6,7 +6,7 @@
 #    By: acollin <acollin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/05/08 21:22:20 by acollin           #+#    #+#              #
-#    Updated: 2014/05/08 22:16:44 by acollin          ###   ########.fr        #
+#    Updated: 2014/05/09 09:59:16 by glovichi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,8 +14,12 @@ NAME=bit_philo
 VERSION=1.0.4
 CFLAGS= -Wall -Werror -Wextra -g
 
-SRC=global_philo.c \
-	main.c \
+SRC =	main.c					\
+		global_philo.c			\
+		./libft/ft_putstr.c		\
+		./libft/ft_putnbr.c		\
+		./libft/ft_putchar.c
+
 
 OBJ=$(SRC:.c=.o)
 
