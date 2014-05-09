@@ -6,7 +6,7 @@
 /*   By: acollin <acollin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/05/08 17:04:37 by acollin           #+#    #+#             */
-/*   Updated: 2014/05/08 21:27:23 by acollin          ###   ########.fr       */
+/*   Updated: 2014/05/09 15:20:09 by glovichi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static t_area				*global_area(t_area *new_area)
 {
 	static t_area			*area;
 
-	if (area != NULL)
+	if (new_area != NULL)
 		area = new_area;
 	return (area);
 }

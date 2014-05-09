@@ -6,7 +6,7 @@
 #    By: acollin <acollin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/05/08 21:22:20 by acollin           #+#    #+#              #
-#    Updated: 2014/05/09 09:59:16 by glovichi         ###   ########.fr        #
+#    Updated: 2014/05/09 14:40:40 by glovichi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,9 @@ SRC =	main.c					\
 		global_philo.c			\
 		./libft/ft_putstr.c		\
 		./libft/ft_putnbr.c		\
-		./libft/ft_putchar.c
+		./libft/ft_putchar.c	\
+		./libft/ft_atoi.c		\
+		./libft/ft_itoa.c
 
 
 OBJ=$(SRC:.c=.o)

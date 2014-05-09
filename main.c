@@ -6,7 +6,7 @@
 /*   By: acollin <acollin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/05/08 15:09:03 by acollin           #+#    #+#             */
-/*   Updated: 2014/05/09 10:02:39 by glovichi         ###   ########.fr       */
+/*   Updated: 2014/05/09 17:12:48 by glovichi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,30 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-static void			*begin(void *data)
+static void				*begin(void *data)
 {
-	int				i;
+	int				id;
+	time_t			time_end;
+	time_t			seconde;
 	t_area			*area;
 
-	i = 1;
+	seconde = 1 + time(NULL);
+	time_end = TIME_OUT + time(NULL);
+	id = ft_atoi(data);
+	free(data);
 	area = get_area();
+	(void) area;
 	puts("Hello Sir");
-	int *x = (int*)(data);
-	printf("%d\n", *x);
-//	printf("My pid: %d\n", area->philo[(int)*data]->id);
-	while(1);
+	while (time_end > time(NULL))
 	{
-		ft_putstr("Begin\n");
-		ft_putnbr(i);
-		ft_putstr("Endin\n");
-		sleep(1);
-		if (area->philo[i].life < 25)
-			ft_putstr("dalle\n");
-		area->philo->life = area->philo->life - 1;
-		ft_putstr("testy");
+		if (seconde <= time(NULL))
+		{
+			area->philo[id].life--;
+			seconde = time(NULL) + 1;
+			printf("Philo: %d life: %d\n", id, area->philo[id].life);
+			if (area->philo[id].life == 0)
+				exit(1);
+		}
 	}
 	return (NULL);
 }
@@ -54,20 +57,10 @@ static void			init_area()
 		area->philo[i].think = THINK_T;
 		area->philo[i].rest = REST_T;
 		area->philo[i].life = MAX_LIFE;
+		printf("life: %d\n", area->philo[i].life);
 		i++;
 	}
-	i = 0;
-	while (1)
-	{
-		ft_putstr("Begin\n");
-		ft_putnbr(area->philo[i].life);
-		ft_putstr("\n");
-		sleep(1);
-		if (area->philo[i].life < 80)
-			ft_putstr("la dalle\n");
-		area->philo[i].life = area->philo[i].life - 1;
-	}
-/*	set_area(area);*/
+	set_area(area);
 }
 
 int					main()
@@ -79,7 +72,10 @@ int					main()
 	init_area();
 	threads = malloc(sizeof(*threads) * 7);
 	while (i < 7)
-		pthread_create(&threads[i++], NULL, begin, &i);
+	{
+		pthread_create(&threads[i], NULL, begin, ft_itoa(i));
+		i += 1;
+	}
 	while (i != 0)
 		pthread_join(threads[i--], NULL);
 	return (0);
