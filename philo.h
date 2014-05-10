@@ -6,7 +6,7 @@
 /*   By: acollin <acollin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/05/08 15:10:37 by acollin           #+#    #+#             */
-/*   Updated: 2014/05/09 17:12:50 by glovichi         ###   ########.fr       */
+/*   Updated: 2014/05/10 13:48:16 by glovichi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@
 # include <unistd.h>
 # include <time.h>
 
-#define EAT_T		5
-#define THINK_T		5
-#define REST_T		10
-#define MAX_LIFE	100
-#define TIME_OUT	10
+# define EAT_T			5
+# define THINK_T		5
+# define REST_T			10
+# define MAX_LIFE		100
+# define TIME_OUT		200
 
 typedef struct		s_philo
 {
@@ -30,6 +30,7 @@ typedef struct		s_philo
 	int				think;
 	int				rest;
 	int				life;
+	int				state;
 }					t_philo;
 
 typedef struct		s_area

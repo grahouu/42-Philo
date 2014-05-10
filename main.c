@@ -6,7 +6,7 @@
 /*   By: acollin <acollin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/05/08 15:09:03 by acollin           #+#    #+#             */
-/*   Updated: 2014/05/09 17:12:48 by glovichi         ###   ########.fr       */
+/*   Updated: 2014/05/10 13:55:44 by glovichi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,16 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-static void				*begin(void *data)
+void				ft_print_status(int id, int life)
+{
+	ft_putstr("Philo: ");
+	ft_putnbr(id);
+	ft_putstr(" life: ");
+	ft_putnbr(life);
+	ft_putstr("\n");
+}
+
+static void			*begin(void *data)
 {
 	int				id;
 	time_t			time_end;
@@ -26,15 +35,45 @@ static void				*begin(void *data)
 	id = ft_atoi(data);
 	free(data);
 	area = get_area();
-	(void) area;
-	puts("Hello Sir");
+	(void)area;
 	while (time_end > time(NULL))
 	{
 		if (seconde <= time(NULL))
 		{
-			area->philo[id].life--;
+/*			if (area->philo[id].life < 95)
+				area->philo[id].state = 1;*/
+			if (area->philo[id].life < 90)
+			{
+				if (id == 0)
+				{
+					if (area->philo[6].state == 0 || area->philo[1].state == 0)
+						area->philo[id].state = 2;
+				}
+				else if (id == 6)
+				{
+					if (area->philo[5].state == 0 || area->philo[0].state == 0)
+						area->philo[id].state = 2;
+				}
+				else
+				{
+					if (area->philo[id - 1].state == 0 ||
+							area->philo[id + 1].state == 0)
+						area->philo[id].state = 2;
+				}
+			}
+			if (area->philo[id].state != 2)
+				area->philo[id].life--;
+			if (area->philo[id].life < 100)
+			{
+				if (area->philo[id].state == 2)
+					area->philo[id].life += 1;
+			}
+			if (area->philo[id].life == 100)
+				area->philo[id].state = 0;
 			seconde = time(NULL) + 1;
-			printf("Philo: %d life: %d\n", id, area->philo[id].life);
+/*			ft_print_status(id, area->philo[id].life);*/
+			printf("philo: %d, life: %d, etat: %d\n", id, area->philo[id].life,
+					area->philo[id].state);
 			if (area->philo[id].life == 0)
 				exit(1);
 		}
@@ -42,7 +81,7 @@ static void				*begin(void *data)
 	return (NULL);
 }
 
-static void			init_area()
+static void			init_area(void)
 {
 	int				i;
 	t_area			*area;
@@ -57,13 +96,13 @@ static void			init_area()
 		area->philo[i].think = THINK_T;
 		area->philo[i].rest = REST_T;
 		area->philo[i].life = MAX_LIFE;
-		printf("life: %d\n", area->philo[i].life);
+		area->philo[i].state = 0;
 		i++;
 	}
 	set_area(area);
 }
 
-int					main()
+int					main(void)
 {
 	pthread_t		*threads;
 	int				i;

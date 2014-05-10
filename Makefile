@@ -6,13 +6,13 @@
 #    By: acollin <acollin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/05/08 21:22:20 by acollin           #+#    #+#              #
-#    Updated: 2014/05/09 14:40:40 by glovichi         ###   ########.fr        #
+#    Updated: 2014/05/10 10:43:39 by glovichi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME=bit_philo
-VERSION=1.0.4
-CFLAGS= -Wall -Werror -Wextra -g
+NAME = philo
+VERSION = 1.0.4
+CFLAGS = -Wall -Werror -Wextra -g
 
 SRC =	main.c					\
 		global_philo.c			\
@@ -23,15 +23,16 @@ SRC =	main.c					\
 		./libft/ft_itoa.c
 
 
-OBJ=$(SRC:.c=.o)
+OBJ = $(SRC:.c=.o)
 
 all: $(NAME) finish
 
 $(NAME): $(OBJ)
-	gcc $(CFLAGS) $(INCLUDES) -o $(NAME) $(OBJ) $(LIBS) -lpthread
+	@gcc $(CFLAGS) $(INCLUDES) -o $(NAME) $(OBJ) $(LIBS) -lpthread
+	@echo This Job is Done sir !
 
 %.o: %.c philo.h
-	gcc $(CFLAGS) $(INCLUDES) -o $@ -c $<
+	@gcc $(CFLAGS) $(INCLUDES) -o $@ -c $<
 
 clean:
 	@(rm -rf $(OBJ))
