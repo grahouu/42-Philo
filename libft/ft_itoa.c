@@ -6,21 +6,22 @@
 /*   By: acollin <acollin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/08 18:56:55 by acollin           #+#    #+#             */
-/*   Updated: 2013/12/17 20:08:14 by acollin          ###   ########.fr       */
+/*   Updated: 2014/05/10 10:47:36 by glovichi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
 static char		*str_malloc(char *str, int n);
+
 static int		ft_d_size(int n);
 
 char			*ft_itoa(int n)
 {
-	char	*str;
-	int		neg;
-	int		d_size;
-	char	*save;
+	char		*str;
+	int			neg;
+	int			d_size;
+	char		*save;
 
 	str = NULL;
 	str = str_malloc(str, n);
@@ -41,9 +42,9 @@ char			*ft_itoa(int n)
 	return (save);
 }
 
-static char	*str_malloc(char *str, int n)
+static char		*str_malloc(char *str, int n)
 {
-	int	i;
+	int			i;
 
 	i = 0;
 	if (n < 0)
@@ -59,7 +60,7 @@ static char	*str_malloc(char *str, int n)
 
 static int		ft_d_size(int n)
 {
-	int	d_size;
+	int			d_size;
 
 	d_size = 1;
 	while (n / 10 != 0)
