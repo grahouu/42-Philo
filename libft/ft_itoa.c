@@ -6,15 +6,40 @@
 /*   By: acollin <acollin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/08 18:56:55 by acollin           #+#    #+#             */
-/*   Updated: 2014/05/10 10:47:36 by glovichi         ###   ########.fr       */
+/*   Updated: 2014/05/11 12:01:47 by glovichi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "../philo.h"
 
-static char		*str_malloc(char *str, int n);
+static int		ft_d_size(int n)
+{
+	int			d_size;
 
-static int		ft_d_size(int n);
+	d_size = 1;
+	while (n / 10 != 0)
+	{
+		n = n / 10;
+		d_size = d_size * 10;
+	}
+	return (d_size);
+}
+
+static char		*str_malloc(char *str, int n)
+{
+	int			i;
+
+	i = 0;
+	if (n < 0)
+		i++;
+	while (n / 10 != 0)
+	{
+		i++;
+		n = n / 10;
+	}
+	str = (char*)malloc(sizeof(char) * (i + 1));
+	return (str);
+}
 
 char			*ft_itoa(int n)
 {
@@ -40,33 +65,4 @@ char			*ft_itoa(int n)
 	}
 	*str = '\0';
 	return (save);
-}
-
-static char		*str_malloc(char *str, int n)
-{
-	int			i;
-
-	i = 0;
-	if (n < 0)
-		i++;
-	while (n / 10 != 0)
-	{
-		i++;
-		n = n / 10;
-	}
-	str = (char*)malloc(sizeof(char) * (i + 1));
-	return (str);
-}
-
-static int		ft_d_size(int n)
-{
-	int			d_size;
-
-	d_size = 1;
-	while (n / 10 != 0)
-	{
-		n = n / 10;
-		d_size = d_size * 10;
-	}
-	return (d_size);
 }
